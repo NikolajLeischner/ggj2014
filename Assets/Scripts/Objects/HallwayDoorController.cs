@@ -3,18 +3,18 @@ using System.Collections;
 
 public class HallwayDoorController : WithMouseActions
 {
-		int remainingTries = 3;
+		public int tries = 3;
 
 		public override void PerformOnClickAction ()
 	{
-		print (remainingTries);
+		print ("remaining tries: " + tries);
 				GuardController guard = GameObject.Find ("guard").GetComponent<GuardController> ();
 				if (guard.IsDistracted ()) {
 						roomManager.MoveToNextRoom ();		
 				} else {
-						if (remainingTries > 0) {
+			if (tries > 0) {
 								roomManager.AddInfoText ("Distract the guard!");
-								--remainingTries;
+				--tries;
 						} else {
 								roomManager.MoveToPaddedCell ();
 						}
