@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Inventory : MonoBehaviour {
+public class Inventory {
 	
 	ArrayList items = new ArrayList ();
 	ArrayList freePositions = new ArrayList ();
@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour {
 	public void AddItemToInventory (InventoryItem item)
 	{
 		if (freePositions.Count == 0) {
-			print ("Inventory full!");
+			MonoBehaviour.print ("Inventory full!");
 			return;		
 		}
 		if (items.IndexOf (item) == -1) {
@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour {
 			item.transform.position = position;
 			freePositions.Remove (last);
 		} else {
-			print ("Item is already in the inventory");
+			MonoBehaviour.print ("Item is already in the inventory");
 		}
 	}
 	

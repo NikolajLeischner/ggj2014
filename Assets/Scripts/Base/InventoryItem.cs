@@ -36,7 +36,6 @@ public class InventoryItem : WithMouseActions
 		void Start ()
 		{
 				roomManager = GameObject.Find ("RoomManager").GetComponent<RoomManager> ();
-		SetSpriteToNormal ();
 		}
 
 		public override void PerformOnHoverAction ()
