@@ -42,6 +42,10 @@ public class RoomManager : MonoBehaviour
 
 		}
 
+		public void RemoveItemFromInventory (GameObject gameObject)
+		{
+		}
+
 		bool HasTimeLimit ()
 		{
 				return timeLimit > 0.0f;
@@ -82,9 +86,9 @@ public class RoomManager : MonoBehaviour
 				info.text = "...";
 				SetInfoAlpha (1.0f);
 
+				// These calls are just for testing..
 				AddInfoText ("fading out..");
-
-		SetCharacter (Characters.Girl);
+				SetCharacter (Characters.Girl);
 		}
 
 		void UpdateInfo ()
