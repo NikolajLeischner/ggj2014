@@ -4,20 +4,43 @@ using System.Collections;
 public class RoomManager : MonoBehaviour
 {
 
-		public GUIText info;
-		public GUIText header;
-		public GUIText timer;
+		// Header
 		public string roomName;
+		public GUIText header;
+
+		// Character portrait
 		public Texture2D characterCat;
 		public Texture2D characterNapoleon;
 		public Texture2D characterGirl;
 		public GUITexture characterPortrait;
-		public float timeLimit;
 		public string nextRoom;
+
+		// Timer
+		public float timeLimit;
+		public GUIText timer;
 		float startTime;
 		float endTime;
+
+		// Info text
+		public GUIText info;
 		float textEndTime = 0;
 		public float textFadeoutSeconds = 10;
+
+		public void SetCharacter (Characters character)
+		{
+				if (character == Characters.Cat) {
+						characterPortrait.texture = characterCat;
+				} else if (character == Characters.Girl) {
+						characterPortrait.texture = characterGirl;
+				} else if (character == Characters.Napoleon) {
+						characterPortrait.texture = characterNapoleon;
+				}
+		}
+
+		public void AddItemToInventory (GameObject gameObject)
+		{
+
+		}
 
 		bool HasTimeLimit ()
 		{
@@ -44,7 +67,6 @@ public class RoomManager : MonoBehaviour
 				textEndTime = Time.time + textFadeoutSeconds;
 				info.text = text;
 				SetInfoAlpha (1.0f);
-
 		}
 
 		void Start ()
@@ -60,7 +82,9 @@ public class RoomManager : MonoBehaviour
 				info.text = "...";
 				SetInfoAlpha (1.0f);
 
-		AddInfoText ("fading out..");
+				AddInfoText ("fading out..");
+
+		SetCharacter (Characters.Girl);
 		}
 
 		void UpdateInfo ()
