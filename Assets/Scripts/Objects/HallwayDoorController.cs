@@ -6,15 +6,15 @@ public class HallwayDoorController : WithMouseActions
 		public int tries = 3;
 
 		public override void PerformOnClickAction ()
-	{
-		print ("remaining tries: " + tries);
+		{
+				print ("remaining tries: " + tries);
 				GuardController guard = GameObject.Find ("guard").GetComponent<GuardController> ();
 				if (guard.IsDistracted ()) {
 						roomManager.MoveToNextRoom ();		
 				} else {
-			if (tries > 0) {
+						if (tries > 0) {
 								roomManager.AddInfoText ("Distract the guard!");
-				--tries;
+								--tries;
 						} else {
 								roomManager.MoveToPaddedCell ();
 						}

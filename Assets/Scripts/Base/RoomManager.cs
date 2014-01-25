@@ -92,7 +92,7 @@ public class RoomManager : MonoBehaviour
 			WithMouseActions gameObject = hit.collider.gameObject.GetComponent<WithMouseActions> ();
 			
 			if (gameObject != null) {
-				if (Input.GetMouseButton (0)) {
+				if (Input.GetMouseButtonDown (0)) {
 					gameObject.PerformOnClickAction ();
 				} else {
 					gameObject.PerformOnHoverAction ();
