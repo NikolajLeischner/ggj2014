@@ -10,11 +10,7 @@ public class RoomManager : MonoBehaviour
 	public float timeLimit;
 	public string nextRoom;
 	public UIManager ui;
-	private SpriteRenderer timerBar;			// Reference to the sprite renderer of the health bar.
-	private Vector3 timerScale;				// The local scale of the health bar initially (with full health).
-	
-	float startTime;
-	float endTime;
+
 	
 	// Info text
 	public GUIText info;
@@ -73,14 +69,6 @@ public class RoomManager : MonoBehaviour
 		manager.currentRoom = roomName;
 		header.text = roomName;
 		timer.text = "";
-		
-		timerBar = GameObject.Find ("TimerBar").GetComponent<SpriteRenderer> ();
-		
-		// Getting the intial scale of the healthbar (whilst the player has full health).
-		timerScale = timerBar.transform.localScale;
-		
-		startTime = Time.time;
-		endTime = startTime + timeLimit;
 
 		InitInventory ();
 	}

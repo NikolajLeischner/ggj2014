@@ -9,9 +9,9 @@ public class Character {
 
 	public static Character CharacterForId(int id) {
 		switch (id) {
-		case 1: return new Cat(); break;
-		case 2: return new Girl(); break;
-		case 3: return new Napoleon(); break;
+		case 1: return new Cat();
+		case 2: return new Girl();
+		case 3: return new Napoleon();
 		default: return null;
 		}
 	}
