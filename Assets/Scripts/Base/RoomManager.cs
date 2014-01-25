@@ -20,6 +20,17 @@ public class RoomManager : MonoBehaviour
 	public GUIText info;
 	float textEndTime = 0;
 	public float textFadeoutSeconds = 10;
+
+	void UpdateInfo ()
+	{
+		float remainingTime = textEndTime - Time.time;
+		if (remainingTime > 0.0f) {
+			float percentage = remainingTime / textFadeoutSeconds;
+			SetInfoAlpha (percentage);
+		} else {
+			info.text = "";		
+		}
+	}
 	
 	void SetInfoAlpha (float alpha)
 	{
@@ -51,10 +62,10 @@ public class RoomManager : MonoBehaviour
 	void Start ()
 	{
 		GameManager manager = GameManager.instance ();
-		ui = GameObject.Find ("UIManager").GetComponent<UIManager> ();
+		//ui = GameObject.Find ("UIManager").GetComponent<UIManager> ();
 
 		// TODO
-		//ui.ChangeCharacter (3);
+		ui.character.ChangeCharacter (2);
 		manager.currentRoom = roomName;
 		header.text = roomName;
 		timer.text = "";
@@ -66,8 +77,7 @@ public class RoomManager : MonoBehaviour
 		
 		startTime = Time.time;
 		endTime = startTime + timeLimit;
-		
-		AddInfoText ("fading out..");
+
 		InitInventory ();
 	}
 	
@@ -90,13 +100,14 @@ public class RoomManager : MonoBehaviour
 	void Update ()
 	{
 		ui.timer.UpdateTimer ();
+		UpdateInfo ();
 		UpdateWithMouseActions ();
 		UpdateMouse ();
 		
 	}
 	
 	// Inventory
-	Inventory inventory;
+	public Inventory inventory;
 	public Vector3 inventoryPosition1;
 	public Vector3 inventoryPosition2;
 	public Vector3 inventoryPosition3;

@@ -9,8 +9,10 @@ public class WithMouseActions : MonoBehaviour {
 		return mouseHovers;
 	}
 
+	public RoomManager roomManager;
+
 	void Start() {
-		RoomManager roomManager = GameObject.Find ("RoomManager").GetComponent<RoomManager> ();
+		roomManager = GameObject.Find ("RoomManager").GetComponent<RoomManager> ();
 		roomManager.RegisterWithMouseActions (this);
 	}
 

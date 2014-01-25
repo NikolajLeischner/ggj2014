@@ -3,16 +3,28 @@ using System.Collections;
 
 public class InventoryItem : WithMouseActions
 {
-
-		RoomManager roomManager;
 		public Sprite inRoom;
 	public Sprite inRoomHover;
 	public Sprite inInventory;
 	public Sprite inInventoryHover;
+	public Sprite inInventoryActive;
 		bool isInInventory;
+	bool isActive = false;
 
 	public override void PerformOnClickAction() {
-		InsertIntoInventory ();
+		if (!isInInventory) {
+						InsertIntoInventory ();
+				} else {
+			roomManager.SetItemActive(this);
+				}
+	}
+
+	public void SetActive(bool active) {
+		isActive = active;
+	}
+
+	public bool IsActive() {
+		return isActive;
 	}
 
 		public void InsertIntoInventory ()
@@ -33,11 +45,6 @@ public class InventoryItem : WithMouseActions
 
 		}
 
-		void Start ()
-		{
-				roomManager = GameObject.Find ("RoomManager").GetComponent<RoomManager> ();
-		}
-
 		public override void PerformOnHoverAction ()
 		{
 				base.PerformOnHoverAction ();
@@ -48,7 +55,10 @@ public class InventoryItem : WithMouseActions
 		void SetSpriteToNormal ()
 		{
 				if (isInInventory) {
-			GetComponent<SpriteRenderer> ().sprite = inInventory;
+			if (IsActive()) {
+				GetComponent<SpriteRenderer> ().sprite = inInventoryActive;
+			} else {
+				GetComponent<SpriteRenderer> ().sprite = inInventory; }
 				} else {
 			GetComponent<SpriteRenderer> ().sprite = inRoom;
 				}
@@ -56,8 +66,11 @@ public class InventoryItem : WithMouseActions
 
 		void SetSpriteToHover ()
 		{
-				if (isInInventory) {
-			GetComponent<SpriteRenderer> ().sprite = inInventoryHover;
+		if (isInInventory) {
+			if (IsActive()) {
+				GetComponent<SpriteRenderer> ().sprite = inInventoryActive;}
+			else {
+				GetComponent<SpriteRenderer> ().sprite = inInventoryHover;}
 				} else {
 			GetComponent<SpriteRenderer> ().sprite = inRoomHover;
 				}

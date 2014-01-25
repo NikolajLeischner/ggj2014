@@ -5,6 +5,8 @@ public class Inventory {
 	
 	ArrayList items = new ArrayList ();
 	ArrayList freePositions = new ArrayList ();
+
+	InventoryItem activeItem = null;
 	
 	public Inventory(ArrayList initialPositions) {
 		freePositions = initialPositions;
@@ -12,6 +14,11 @@ public class Inventory {
 	
 	public void SetItemActive (InventoryItem item)
 	{
+		if (activeItem != null) {
+			activeItem.SetActive(false);		
+		}
+		activeItem = item;
+		activeItem.SetActive (true);
 		
 	}
 	
@@ -41,6 +48,11 @@ public class Inventory {
 			// TODO: Do we need to re-add things to the room? Currently just moving the item out of the way.
 			item.transform.position = new Vector3 (-100, -100, -100);
 			items.Remove (id);
+
+			if (item.IsActive()) {
+				item.SetActive (false);
+				activeItem = null;
+			}
 		}
 	}
 	
