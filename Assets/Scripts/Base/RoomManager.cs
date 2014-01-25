@@ -56,16 +56,20 @@ public class RoomManager : MonoBehaviour
 	
 	public void MoveToNextRoom ()
 	{
-		Application.LoadLevel (nextRoom);
+		int characterId = GameManager.instance ().NextRandomCharacterId ();
+		Character character = Character.CharacterForId (characterId);
+		string nextLevel = Rooms.SceneForCharacter (nextRoom, character);
+		Application.LoadLevel (nextLevel);
 	}
-	
+
 	void Start ()
 	{
 		GameManager manager = GameManager.instance ();
+		int characterId = manager.CurrentCharacterId();
 		//ui = GameObject.Find ("UIManager").GetComponent<UIManager> ();
 
 		// TODO
-		ui.character.ChangeCharacter (2);
+		ui.character.ChangeCharacter (characterId);
 		manager.currentRoom = roomName;
 		header.text = roomName;
 		timer.text = "";

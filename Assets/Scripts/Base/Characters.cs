@@ -5,8 +5,16 @@ public class Character {
 	public int characterIndex; // 1-indexed
 	public string Name;
 	public Sprite characterPortrait;
+	public string SceneSuffix;
 
-	static Character[] Characters = new Character[3];
+	public static Character CharacterForId(int id) {
+		switch (id) {
+		case 1: return new Cat(); break;
+		case 2: return new Girl(); break;
+		case 3: return new Napoleon(); break;
+		default: return null;
+		}
+	}
 }
 
 public class Cat:Character {
@@ -14,6 +22,7 @@ public class Cat:Character {
 		characterIndex = 1;
 		Name = "Cat";
 		characterPortrait = Resources.Load<Sprite> ("Characters/cat");
+		SceneSuffix = "_cat";
 	}
 }
 
@@ -22,6 +31,7 @@ public class Girl:Character {
 		characterIndex = 2;
 		Name = "Girl";
 		characterPortrait = Resources.Load<Sprite> ("Characters/girl");
+		SceneSuffix = "_girl";
 	}
 }
 
@@ -30,5 +40,6 @@ public class Napoleon:Character {
 		characterIndex = 3;
 		Name = "Napoleon";
 		characterPortrait = Resources.Load<Sprite> ("Characters/napoleon");
+		SceneSuffix = "_napoleon";
 	}
 }
