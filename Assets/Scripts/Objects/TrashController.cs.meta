@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 4bf2f50d1c1384e2bb0c8c02a12a0364
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - roomManager: {instanceID: 0}
+  - whole: {fileID: 21300000, guid: d02aec3aeba094695b7dc132d74a74e6, type: 3}
+  - broken: {fileID: 21300000, guid: 6d76cfe7f48064b078dffeb08b8a01ce, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TrayController : WithMouseActions {
+public class TrashController : WithMouseActions {
 	
 	public Sprite whole;
 	public Sprite broken;
@@ -15,7 +15,7 @@ public class TrayController : WithMouseActions {
 		base.PerformOnClickAction ();
 		
 		GetComponent<SpriteRenderer> ().sprite = broken;
-		GameObject key = GameObject.Find ("key");
-		key.transform.position = new Vector3 (2.9f, -2.73f, 0.0f);
+		GameObject pin = GameObject.Find ("pin");
+		pin.transform.position = new Vector3 (3.140685f, -2.268516f, 0.0f);
 	}
 }

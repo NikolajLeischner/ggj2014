@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BalloonController : WithMouseActions {
+public class HallwayDoorController : WithMouseActions {
 
 	public override void PerformOnClickAction() {
-		InventoryItem key = GameObject.Find ("key").GetComponent<InventoryItem> ();
-		if (key.IsActive ()) {
+		GuardController guard = GameObject.Find ("guard").GetComponent<GuardController> ();
+		if (guard.isDistracted ()) {
 						roomManager.MoveToNextRoom ();		
 				} else {
 			roomManager.AddInfoText ("It is not *that* easy!");
