@@ -4,6 +4,7 @@ using System.Collections;
 public class RoomManager : MonoBehaviour
 {
 
+		public GUIText info;
 		public GUIText header;
 		public GUIText timer;
 		public string roomName;
@@ -15,6 +16,8 @@ public class RoomManager : MonoBehaviour
 		public string nextRoom;
 		float startTime;
 		float endTime;
+		float textEndTime = 0;
+		public float textFadeoutSeconds = 10;
 
 		bool HasTimeLimit ()
 		{
@@ -31,15 +34,44 @@ public class RoomManager : MonoBehaviour
 				Application.LoadLevel (nextRoom);
 		}
 
+		void SetInfoAlpha (float alpha)
+		{
+				info.material.color = new Color (1.0f, 1.0f, 1.0f, alpha);
+		}
+
+		public void AddInfoText (string text)
+		{
+				textEndTime = Time.time + textFadeoutSeconds;
+				info.text = text;
+				SetInfoAlpha (1.0f);
+
+		}
+
 		void Start ()
 		{
 				GameManager manager = GameManager.instance ();
-				manager.currentRoom = name;
-				header.text = name;
+				manager.currentRoom = roomName;
+				header.text = roomName;
 				timer.text = "";
 
 				startTime = Time.time;
 				endTime = startTime + timeLimit;
+
+				info.text = "...";
+				SetInfoAlpha (1.0f);
+
+		AddInfoText ("fading out..");
+		}
+
+		void UpdateInfo ()
+		{
+				float remainingTime = textEndTime - Time.time;
+				if (remainingTime > 0.0f) {
+						float percentage = remainingTime / textFadeoutSeconds;
+						SetInfoAlpha (percentage);
+				} else {
+						info.text = "";		
+				}
 		}
 
 		void UpdateTimer ()
@@ -74,6 +106,7 @@ public class RoomManager : MonoBehaviour
 		void Update ()
 		{
 				UpdateTimer ();
+				UpdateInfo ();
 				UpdateMouse ();
 	
 		}
