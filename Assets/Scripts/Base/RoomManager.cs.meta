@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: 29a94cb29a4014d37aada017e51bd6bc
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - header: {instanceID: 0}
+  - timer: {instanceID: 0}
+  - characterCat: {fileID: 21300000, guid: d876f2f443696b54d96ca4b74c6b0387, type: 3}
+  - characterNapoleon: {fileID: 21300000, guid: 5302a9ab25ce02845b8f87fea81af933,
+      type: 3}
+  - characterGirl: {fileID: 21300000, guid: 3f295f9de4aedb64e8db08887d5d3ae2, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

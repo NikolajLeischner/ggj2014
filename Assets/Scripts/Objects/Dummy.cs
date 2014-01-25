@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Dummy : Clickable {
+public class Dummy : WithMouseActions {
 
 	private RoomManager roomManager;
 
@@ -11,7 +11,7 @@ public class Dummy : Clickable {
 
 	}
 
-	protected override void PerformClickAction() {
+	public override void PerformOnClickAction() {
 
 		print ("Dummy was clicked");
 
