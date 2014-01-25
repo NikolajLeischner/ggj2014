@@ -13,7 +13,6 @@ public class TimerManager : MonoBehaviour
 
 	float startTime;
 	float endTime;
-	int lastRemainingSeconds;
 	int lastSwitch;
 	
 	bool HasTimeLimit ()
@@ -24,8 +23,6 @@ public class TimerManager : MonoBehaviour
 	void Start ()
 	{	
 		if (HasTimeLimit()) {
-			//timerBar = GameObject.Find("TimerBar").GetComponent<SpriteRenderer>();
-			
 			// Getting the intial scale of the healthbar (whilst the player has full health).
 			timerScale = timerBar.transform.localScale;
 			
@@ -43,9 +40,7 @@ public class TimerManager : MonoBehaviour
 				UIManager ui = GameObject.Find("UIManager").GetComponent<UIManager>();
 				ui.character.RandomCharacter(ui.character.playerChar.characterIndex);
 				lastSwitch = Mathf.RoundToInt(remainingTime);
-				//print (remainingTime + " " + ui.character.playerChar.characterIndex);
 			}
-			//print(remainingTime % 5);
 
 			timerText.text = "" + Mathf.RoundToInt (remainingTime);
 			
@@ -57,8 +52,6 @@ public class TimerManager : MonoBehaviour
 				//room = GameObject.Find ("RoomManager").GetComponent<RoomManager> ();
 				room.MoveToPaddedCell();
 			}
-
-			lastRemainingSeconds = Mathf.RoundToInt (remainingTime);
 		}
 	}
 }
