@@ -15,7 +15,7 @@ public class TrayController : WithMouseActions {
 		base.PerformOnClickAction ();
 		
 		GetComponent<SpriteRenderer> ().sprite = broken;
-		GameObject key = GameObject.FindWithTag ("Key");
+		GameObject key = GameObject.Find ("key");
 		key.transform.position = new Vector3 (2.9f, -2.73f, 0.0f);
 	}
 }

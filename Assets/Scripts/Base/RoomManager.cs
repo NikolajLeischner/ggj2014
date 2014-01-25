@@ -3,7 +3,6 @@ using System.Collections;
 
 public class RoomManager : MonoBehaviour
 {
-
 		// Header
 		public string roomName;
 		public GUIText header;
@@ -35,15 +34,6 @@ public class RoomManager : MonoBehaviour
 				} else if (character == Characters.Napoleon) {
 						characterPortrait.texture = characterNapoleon;
 				}
-		}
-
-		public void AddItemToInventory (GameObject gameObject)
-		{
-
-		}
-
-		public void RemoveItemFromInventory (GameObject gameObject)
-		{
 		}
 
 		bool HasTimeLimit ()
@@ -88,7 +78,9 @@ public class RoomManager : MonoBehaviour
 
 				// These calls are just for testing..
 				AddInfoText ("fading out..");
-				SetCharacter (Characters.Girl);
+				SetCharacter (Characters.Cat);
+
+				InitInventory ();
 		}
 
 		void UpdateInfo ()
@@ -135,7 +127,54 @@ public class RoomManager : MonoBehaviour
 		{
 				UpdateTimer ();
 				UpdateInfo ();
+
+				UpdateWithMouseActions ();
 				UpdateMouse ();
+		}
+
+	// Inventory
+	Inventory inventory;
+	public Vector3 inventoryPosition1;
+		public Vector3 inventoryPosition2;
+		public Vector3 inventoryPosition3;
+
+		void InitInventory ()
+		{
+				ArrayList freePositions = new ArrayList ();
+				freePositions.Add (inventoryPosition1);
+				freePositions.Add (inventoryPosition2);
+				freePositions.Add (inventoryPosition3);
+				inventory = new Inventory (freePositions);
+		}
+
+		public void SetItemActive (InventoryItem item)
+		{
+				inventory.SetItemActive (item);
+
+		}
 	
+		public void AddItemToInventory (InventoryItem item)
+		{
+				inventory.AddItemToInventory (item);
+		}
+	
+		public void RemoveItemFromInventory (InventoryItem item)
+		{
+				inventory.RemoveItemFromInventory (item);
+		}
+
+	// Bookkeeping for WithMouseActions objects.
+		ArrayList withMouseActions = new ArrayList ();
+
+		void UpdateWithMouseActions ()
+		{
+				foreach (WithMouseActions e in withMouseActions) {
+						e.ResetHoverState ();		
+				}
+		}
+
+		public void RegisterWithMouseActions (WithMouseActions toAdd)
+		{
+				withMouseActions.Add (toAdd);
 		}
 }
