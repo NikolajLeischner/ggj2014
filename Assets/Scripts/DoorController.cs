@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BalloonController : WithMouseActions {
+public class DoorController : WithMouseActions {
 
 	public override void PerformOnClickAction() {
 		InventoryItem key = GameObject.Find ("key").GetComponent<InventoryItem> ();

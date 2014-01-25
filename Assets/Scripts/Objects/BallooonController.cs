@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DoorController : WithMouseActions {
+public class BalloonController : WithMouseActions {
 	public Sprite whole;
 	public Sprite broken;
 	public bool popped=false;

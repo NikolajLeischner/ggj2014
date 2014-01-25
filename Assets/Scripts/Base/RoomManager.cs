@@ -51,7 +51,7 @@ public class RoomManager : MonoBehaviour
 	
 	public void MoveToPaddedCell ()
 	{
-		Application.LoadLevel (Rooms.PaddedCell);
+		Application.LoadLevel (Rooms.Bedroom);
 	}
 	
 	public void MoveToNextRoom ()
