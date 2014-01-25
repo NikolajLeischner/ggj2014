@@ -8,4 +8,8 @@ public class Rooms  {
 	public static string Bedroom = "Bedroom";
 
 	public static string Hallway = "Hallway";
+
+	public static string SceneForCharacter(string scene, Character character) {
+		return scene + character.SceneSuffix;
+	}
 }

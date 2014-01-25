@@ -20,11 +20,7 @@ public class CharacterManager : MonoBehaviour
 	public void ChangeCharacter(int newCharIndex)
 	{
 		//int characterIndex = newCharIndex;
-		switch (newCharIndex) {
-		case 1: playerChar = new Cat(); break;
-		case 2: playerChar = new Girl(); break;
-		case 3: playerChar = new Napoleon(); break;
-		}
+		playerChar = Character.CharacterForId (newCharIndex);
 		
 		characterPortrait.sprite = playerChar.characterPortrait;
 		//print (characterPortrait.sprite);
