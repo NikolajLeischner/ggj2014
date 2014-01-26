@@ -14,9 +14,12 @@ public class IntroManager : MonoBehaviour
 	{	
 		startTime = Time.time;
 
-		messages [0] = "test";
-		messages [1] = "aksdnkalsjdlka";
-		messages [2] = "aksdnkalsjdlka";
+		messages [0] = "Perspectives... ";
+		messages [1] = "Everyone sees in their own way";
+		messages [2] = "One person's hell is another's utopia";
+		messages [3] = "Everything is what it is";
+		messages [4] = "But how we see them depends on ourself";
+		messages [5] = "This is the story of Nemo and his mind";
 
 	}
 	
