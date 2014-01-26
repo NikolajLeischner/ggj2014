@@ -23,6 +23,7 @@ public class GuardController : MonoBehaviour {
 	}
 
 	public void Destroy() {
+		audio.Play ();
 		GetComponent<SpriteRenderer> ().sprite = GuardDestroyed;
 		isDistracted = true;
 		}

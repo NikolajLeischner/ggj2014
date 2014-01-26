@@ -10,6 +10,7 @@ public class HallwayDoorController : WithMouseActions
 				print ("remaining tries: " + tries);
 				GuardController guard = GameObject.Find ("guard").GetComponent<GuardController> ();
 				if (guard.IsDistracted ()) {
+			audio.Play();
 						roomManager.MoveToNextRoom ();		
 				} else {
 						if (tries > 0) {

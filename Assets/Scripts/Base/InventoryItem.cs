@@ -13,6 +13,7 @@ public class InventoryItem : WithMouseActions
 
 	public override void PerformOnClickAction() {
 		if (!isInInventory) {
+			audio.Play ();
 						InsertIntoInventory ();
 				} else {
 			roomManager.SetItemActive(this);
