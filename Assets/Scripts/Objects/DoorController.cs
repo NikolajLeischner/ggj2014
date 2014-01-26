@@ -20,7 +20,7 @@ public class DoorController : WithMouseActions
 
 		IEnumerator OpenDoorAndMove ()
 		{
-				GameObject.Find ("bedroom").GetComponent<SpriteRenderer> ().sprite = BedroomOpen;
+				GameObject.Find ("room_background").GetComponent<SpriteRenderer> ().sprite = BedroomOpen;
 				yield return new WaitForSeconds (2);
 				roomManager.MoveToNextRoom ();	
 		}

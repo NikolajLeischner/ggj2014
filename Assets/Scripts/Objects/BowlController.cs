@@ -23,10 +23,10 @@ public class BowlController : WithMouseActions
 				if (fills == 1) {
 						roomManager.AddInfoText ("Fill the bowl - I need more!");		
 				}
-				UpdateSprite ();
-				if (fills > 0) {
+				if (fills >= 0) {
 						--fills;
-				}
+		}
+		UpdateSprite ();
 		}
 
 		void UpdateSprite ()
