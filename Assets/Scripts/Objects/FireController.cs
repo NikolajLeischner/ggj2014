@@ -9,7 +9,6 @@ public class FireController : WithMouseActions
 		public Sprite fireEmptyKey;
 		public Sprite fireEmpty;
 		int fills = 3;
-		bool hasKey = true;
 		BarrelController barrel;
 		bool gettingColder = true;
 
@@ -26,20 +25,6 @@ public class FireController : WithMouseActions
 				} else if (!gettingColder && fills < 3) {
 						FireUp();
 				}
-
-		/*
-				if (fills == 0 && hasKey) {
-						GameObject.Find ("key").GetComponent<InventoryItem> ().InsertIntoInventory ();
-						hasKey = false;
-				}
-
-				if (fills == 1) {
-						roomManager.AddInfoText ("Fill the fire - I need more!");		
-				}
-				if (fills >= 0) {
-						--fills;
-				}
-				UpdateSprite (); */
 		}
 
 		void UpdateSprite ()
@@ -50,8 +35,8 @@ public class FireController : WithMouseActions
 						GetComponent<SpriteRenderer> ().sprite = fire75;
 				} else if (fills == 1) {
 						GetComponent<SpriteRenderer> ().sprite = fire25;
-				} else if (fills == 0 && hasKey) {
-						GetComponent<SpriteRenderer> ().sprite = fireEmptyKey;
+				} else if (fills == 0) {
+						GetComponent<SpriteRenderer> ().sprite = fireEmpty;
 				} else {
 						GetComponent<SpriteRenderer> ().sprite = fireEmpty;
 				}
@@ -59,11 +44,10 @@ public class FireController : WithMouseActions
 
 		public void FireUp ()
 		{
-				if (fills > 2) {
+				if (fills == 2) {
 					gettingColder=true;
 					if(!barrel.keyTaken)
 						barrel.melt();
-					return;
 				}
 
 				++fills;
@@ -73,11 +57,10 @@ public class FireController : WithMouseActions
 
 		public void FireDown ()
 		{
-				if (fills == 0) {
+				if (fills == 1) {
 					gettingColder=false;
-					if(!barrel.keyTaken)
+					if(!barrel.melted)
 						barrel.burst();
-					return;
 				}
 			
 				--fills;

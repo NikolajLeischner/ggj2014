@@ -7,7 +7,7 @@ public class BarrelController : WithMouseActions
 	public Sprite barrelIcecube; // ice cube
 	public Sprite barrelMelted;
 	bool broken = false;
-	bool melted = false;
+	public bool melted = false;
 	public bool keyTaken = false;
 
 	public override void PerformOnClickAction ()
@@ -20,8 +20,9 @@ public class BarrelController : WithMouseActions
 						roomManager.AddInfoText ("There's a key inside, I wonder how to get it out?");
 				} else if (broken && melted && !keyTaken) {
 						keyTaken=true;
+						GameObject.Find ("key").GetComponent<InventoryItem> ().InsertIntoInventory ();
 						enabled=false;
-						// disappear
+			GetComponent<SpriteRenderer>().sprite = null;
 				} else if (broken && melted && keyTaken) {
 				}
 	}
@@ -33,6 +34,7 @@ public class BarrelController : WithMouseActions
 
 	public void melt() {
 		GetComponent<SpriteRenderer> ().sprite = barrelMelted;
+		GetComponent<Transform> ().localScale = new Vector3 (1, 1, 1);
 		melted = true;
 	}
 
