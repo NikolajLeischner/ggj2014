@@ -23,6 +23,10 @@ public class InventoryItem : WithMouseActions
 		isActive = active;
 	}
 
+	public bool IsInInventory() {
+		return isInInventory;
+	}
+
 	public bool IsActive() {
 		return isActive;
 	}

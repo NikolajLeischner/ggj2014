@@ -11,14 +11,12 @@ public class BalloonController : WithMouseActions {
 	}
 
 	public override void PerformOnClickAction() {
-		InventoryItem key = GameObject.Find ("pin").GetComponent<InventoryItem> ();
-		if (key.IsActive ()) {
+		InventoryItem pin = GameObject.Find ("pin").GetComponent<InventoryItem> ();
+		if (!popped && pin.IsActive ()) {
 					GetComponent<SpriteRenderer> ().sprite = broken;	
 					popped = true;
 			GuardController guard = GameObject.Find("guard").GetComponent<GuardController> ();
 			guard.Distract();
-				} else {
-			//roomManager.AddInfoText ("It is not *that* easy!");
-				}
+				} 
 	}
 }

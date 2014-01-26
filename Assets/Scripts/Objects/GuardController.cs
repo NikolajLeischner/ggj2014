@@ -7,6 +7,7 @@ public class GuardController : MonoBehaviour {
 
 	public Sprite GuardWatching;
 	public Sprite GuardDistracted;
+	public Sprite GuardDestroyed;
 
 	public bool IsDistracted(){
 		return isDistracted;
@@ -20,4 +21,9 @@ public class GuardController : MonoBehaviour {
 		GetComponent<SpriteRenderer> ().sprite = GuardDistracted;
 		isDistracted = true;
 	}
+
+	public void Destroy() {
+		GetComponent<SpriteRenderer> ().sprite = GuardDestroyed;
+		isDistracted = true;
+		}
 }
