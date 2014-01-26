@@ -6,7 +6,7 @@ public class IntroManager : MonoBehaviour
 	public GUIText timerText;
 	public RoomManager room;
 	int lastMessage = -1;
-	string[] messages = new string[10];
+	string[] messages = new string[3];
 
 	float startTime;
 
@@ -16,6 +16,7 @@ public class IntroManager : MonoBehaviour
 
 		messages [0] = "test";
 		messages [1] = "aksdnkalsjdlka";
+		messages [2] = "aksdnkalsjdlka";
 
 	}
 	
@@ -24,7 +25,14 @@ public class IntroManager : MonoBehaviour
 		float currentTime = Time.time - startTime;
 		int nextMessage = Mathf.RoundToInt (currentTime / 7);
 
-		if(nextMessage!=lastMessage)
-			room.AddInfoText (messages[nextMessage]);
+		if (nextMessage != lastMessage) {
+			if (nextMessage < messages.Length - 1) {
+				room.AddInfoText (messages[nextMessage]);
+			}
+			else {
+				GameManager.instance().currentRoom = Rooms.Bedroom;
+				room.MoveToNextRoom();
+			}
+				}
 	}
 }

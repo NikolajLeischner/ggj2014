@@ -12,6 +12,8 @@ public class Rooms  {
 	public static string Lobby = "Lobby";
 
 	public static string SceneForCharacter(string scene, Character character) {
+		if (scene == Rooms.Bedroom) return scene; 
+		else
 		return scene + character.SceneSuffix;
 	}
 }
