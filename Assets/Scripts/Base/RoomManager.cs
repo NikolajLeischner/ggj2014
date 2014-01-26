@@ -45,16 +45,34 @@ public class RoomManager : MonoBehaviour
 		return timeLimit > 0.0f;
 	}
 	
-	public void MoveToPaddedCell ()
+	public void ReloadCurrentRoom ()
 	{
-		Application.LoadLevel (Rooms.Bedroom);
+		GameManager.instance ().roomStartMessage = "I need to try that again..";
+		int characterId = GameManager.instance ().NextRandomCharacterIdForRoom();
+		Character character = Character.CharacterForId (characterId);
+		string room = GameManager.instance().currentRoom;
+		string nextLevel = Rooms.SceneForCharacter (room, character);
+		Application.LoadLevel (nextLevel);
 	}
 	
 	public void MoveToNextRoom ()
 	{
-		int characterId = GameManager.instance ().NextRandomCharacterId ();
+		GameManager.instance ().CurrentRoomSuccess ();
+		int characterId;
+		string room;
+		if (GameManager.instance ().NextRoomUnlocked ()) {
+						print ("Unlocked next room..");
+						room = nextRoom;
+						characterId = GameManager.instance ().NextRandomCharacterId ();
+			GameManager.instance ().roomStartMessage = "";
+		} else {
+			characterId = GameManager.instance ().NextRandomCharacterIdForRoom();
+			room = GameManager.instance().currentRoom;
+			GameManager.instance ().roomStartMessage = "Moving on..";
+		}
+		
 		Character character = Character.CharacterForId (characterId);
-		string nextLevel = Rooms.SceneForCharacter (nextRoom, character);
+		string nextLevel = Rooms.SceneForCharacter (room, character);
 		Application.LoadLevel (nextLevel);
 	}
 
@@ -62,13 +80,12 @@ public class RoomManager : MonoBehaviour
 	{
 		GameManager manager = GameManager.instance ();
 		int characterId = manager.CurrentCharacterId();
-		//ui = GameObject.Find ("UIManager").GetComponent<UIManager> ();
 
-		// TODO
 		ui.character.ChangeCharacter (characterId);
 		manager.currentRoom = roomName;
 		header.text = roomName;
 		timer.text = "";
+		AddInfoText (manager.roomStartMessage);
 
 		InitInventory ();
 	}
