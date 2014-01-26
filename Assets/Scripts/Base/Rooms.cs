@@ -9,6 +9,8 @@ public class Rooms  {
 
 	public static string Hallway = "Hallway";
 
+	public static string Lobby = "Lobby";
+
 	public static string SceneForCharacter(string scene, Character character) {
 		return scene + character.SceneSuffix;
 	}
