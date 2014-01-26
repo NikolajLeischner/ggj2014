@@ -17,6 +17,7 @@ public class OutroManager : MonoBehaviour
 		messages [0] = "Congratulations";
 		messages [1] = "You have set them free";
 		messages [2] = "Nemo's mind is now empty";
+		messages [3] = "";
 	}
 	
 	void Update ()
@@ -27,7 +28,7 @@ public class OutroManager : MonoBehaviour
 		if(nextMessage!=lastMessage)
 			room.AddInfoText (messages[nextMessage]);
 
-		if (lastMessage == 2)
+		if (lastMessage == 5)
 						Application.Quit ();
 	}
 }
