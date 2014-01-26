@@ -6,7 +6,7 @@ public class IntroManager : MonoBehaviour
 	public GUIText timerText;
 	public RoomManager room;
 	int lastMessage = -1;
-	string[] messages = new string[3];
+	string[] messages = new string[7];
 
 	float startTime;
 
@@ -20,6 +20,7 @@ public class IntroManager : MonoBehaviour
 		messages [3] = "Everything is what it is";
 		messages [4] = "But how we see them depends on ourself";
 		messages [5] = "This is the story of Nemo and his mind";
+		messages [6] = "";
 
 	}
 	
