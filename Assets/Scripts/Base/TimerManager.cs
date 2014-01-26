@@ -38,7 +38,7 @@ public class TimerManager : MonoBehaviour
 			
 			if (remainingTime <= 0.0f) {
 				//room = GameObject.Find ("RoomManager").GetComponent<RoomManager> ();
-				room.MoveToPaddedCell();
+				room.ReloadCurrentRoom();
 			}
 		}
 	}

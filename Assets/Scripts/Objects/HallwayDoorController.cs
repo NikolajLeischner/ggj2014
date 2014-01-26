@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class HallwayDoorController : WithMouseActions
@@ -16,7 +16,7 @@ public class HallwayDoorController : WithMouseActions
 								roomManager.AddInfoText ("Distract the guard!");
 								--tries;
 						} else {
-								roomManager.MoveToPaddedCell ();
+								roomManager.ReloadCurrentRoom ();
 						}
 				}
 		}
