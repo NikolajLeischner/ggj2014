@@ -19,6 +19,7 @@ public class BallController : WithMouseActions
 
 		IEnumerator MoveToTarget (Vector3 target)
 		{
+		audio.Play ();
 				while (Vector3.Distance(transform.position, target) > 0.05f) {
 						transform.position = Vector3.Lerp (transform.position, target, 1f * Time.deltaTime);
 			

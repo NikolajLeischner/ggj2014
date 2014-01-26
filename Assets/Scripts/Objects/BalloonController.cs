@@ -15,6 +15,7 @@ public class BalloonController : WithMouseActions {
 		if (!popped && pin.IsActive ()) {
 					GetComponent<SpriteRenderer> ().sprite = broken;	
 					popped = true;
+			audio.Play();
 			GuardController guard = GameObject.Find("guard").GetComponent<GuardController> ();
 			guard.Distract();
 				} 

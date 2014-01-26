@@ -20,6 +20,7 @@ public class DoorController : WithMouseActions
 
 		IEnumerator OpenDoorAndMove ()
 		{
+		audio.Play ();
 				GameObject.Find ("room_background").GetComponent<SpriteRenderer> ().sprite = BedroomOpen;
 				yield return new WaitForSeconds (2);
 				roomManager.MoveToNextRoom ();	

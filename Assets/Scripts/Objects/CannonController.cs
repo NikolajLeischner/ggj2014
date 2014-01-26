@@ -27,6 +27,7 @@ public class CannonController : WithMouseActions {
 	{
 		GetComponent<SpriteRenderer> ().sprite = cannonBurning;
 		yield return new WaitForSeconds(2.0f);
+		audio.Play ();
 		GetComponent<SpriteRenderer> ().sprite = cannonFired;
 
 		float speed = 3.0f;

@@ -21,6 +21,7 @@ public class TrashController : WithMouseActions
 
 				InventoryItem item = pin.GetComponent<InventoryItem> ();
 				if (!item.IsInInventory ()) {
+			audio.Play();
 						pin.transform.position = new Vector3 (-2.83f, -2.543f, 0.0f);
 				}
 
